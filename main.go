@@ -24,7 +24,7 @@ func main() {
 	ln, err := net.Listen("tcp", ":79")
 
 	if err != nil {
-		fmt.Printf("Could not bind to port.\n")
+		fmt.Printf("Could not bind to port: %s\n", err)
 		os.Exit(1)
 	}
 
