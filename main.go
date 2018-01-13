@@ -24,14 +24,15 @@ func main() {
 	ln, err := net.Listen("tcp", ":79")
 
 	if err != nil {
-		fmt.Printf("Could not bind to port")
+		fmt.Printf("Could not bind to port.\n")
 		os.Exit(1)
 	}
 
 	for {
 		conn, err := ln.Accept()
+
 		if err != nil {
-			fmt.Printf("Error occurred: %s", err)
+			fmt.Printf("Couldn't accept connection: %s\n", err)
 			continue
 		}
 
