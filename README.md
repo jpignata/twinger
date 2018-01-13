@@ -26,10 +26,10 @@ and returns information about Twitter users.
 
     ```console
     fargate service create twinger --lb twinger --port 79 \
-      -e CONSUMER_KEY=yourconsumerkey \
-      -e CONSUMER_SECRET=yourconsumersecret \
-      -e ACCESS_TOKEN=youraccesstoken \
-      -e ACCESS_TOKEN_SECRET=youraccesstokensecret
+      --env CONSUMER_KEY=yourconsumerkey \
+      --env CONSUMER_SECRET=yourconsumersecret \
+      --env ACCESS_TOKEN=youraccesstoken \
+      --env ACCESS_TOKEN_SECRET=youraccesstokensecret
     ```
 
 1. **Get the DNSName of the load balancer**
