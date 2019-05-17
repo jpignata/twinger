@@ -1,14 +1,13 @@
 # Twinger
 
-This is a small demo application for the [fargate CLI][fargate-cli]. It
-demonstrates building a network load balancer and deploying a TCP service.
-
-The application is a daemon that speaks a subset of the [finger user information protocol][finger-rfc]
+The application is a daemon that speaks a subset of the [finger user information protocol][0]
 and returns information about Twitter users.
 
 ![](doc/screenshot.png)
 
-# Deploy
+# Usage
+
+1. **[Get a Twitter API Key][1]**
 
 1. **Clone the repo**
 
@@ -16,33 +15,33 @@ and returns information about Twitter users.
     git clone https://github.com/jpignata/twinger.git
     ```
 
-1. **Create the load balancer**
+1. **Build the project**
 
     ```console
-    fargate lb create twinger --port 79
+    make
     ```
 
-1. **Create and deploy the service**
+1. **Run it**
 
     ```console
-    fargate service create twinger --lb twinger --port 79 \
-      --env CONSUMER_KEY=yourconsumerkey \
-      --env CONSUMER_SECRET=yourconsumersecret \
-      --env ACCESS_TOKEN=youraccesstoken \
-      --env ACCESS_TOKEN_SECRET=youraccesstokensecret
+      CONSUMER_KEY=yourconsumerkey \
+      CONSUMER_SECRET=yourconsumersecret \
+      ACCESS_TOKEN=youraccesstoken \
+      ACCESS_TOKEN_SECRET=youraccesstokensecret sudo ./twinger
     ```
 
-1. **Get the DNSName of the load balancer**
+1. **lol**
 
     ```console
-    fargate lb info twinger
+    $ finger washingtonpost@localhost
+    [localhost]
+    Trying 127.0.0.1...
+    Login: washingtonpost                    Name: The Washington Post
+    Location: Washington, DC                 URL: http://t.co/Hq7hTYkOPg
+    Description: Breaking news, analysis, and opinion. Founded in 1877. Our staff on Twitter: https://t.co/VV0UBAMHg8
+    Last tweet Fri May 17 17:45:36 +0000 2019 from SocialFlow
+    Plan: Analysis: Florida lawmakers rail against FBI for secrecy on voter breaches https://t.co/EgWZFFXmyu
     ```
 
-1. **Test**
-
-    ```console
-    finger nytimes@DNSName
-    ```
-
-[finger-rfc]: https://tools.ietf.org/html/rfc1288
-[fargate-cli]: https://github.com/jpignata/fargate
+[0]: https://tools.ietf.org/html/rfc1288
+[1]: https://developer.twitter.com
